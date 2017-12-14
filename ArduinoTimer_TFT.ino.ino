@@ -21,18 +21,27 @@ MCUFRIEND_kbv tft;
 
 int width = tft.width();
   int height = tft.height(); 
+  
+  unsigned long currentTime;
+  unsigned long timeStart;
 
 void setup() {
   int ID = tft.readID();
   tft.begin(ID);
-  tft.setRotation(0);
-  tft.fillScreen(WHITE);
+  tft.setRotation(3);
+  tft.fillScreen(BLUE);
+  tft.setTextColor(GREEN, BLUE);  
+  tft.setTextSize(8);
+  tft.setTextWrap(false);
+  timeStart = millis();  
   
 
 }
 
 void loop() {
  
-  tft.fillRect(0,0,width, height, BLUE);
+  tft.setCursor(45, 95);
+  currentTime = millis() - timeStart;
+  tft.print(currentTime);
 
 }
